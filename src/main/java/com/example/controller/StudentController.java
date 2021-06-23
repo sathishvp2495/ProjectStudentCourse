@@ -25,7 +25,7 @@ public class StudentController {
     }
 
     @GetMapping("{studentId}")
-    @ResponseStatus(value = HttpStatus.ACCEPTED);
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Optional<Student> getStudent(@PathVariable Integer studentId){
         return studentService.getStudentById(studentId);
     }
