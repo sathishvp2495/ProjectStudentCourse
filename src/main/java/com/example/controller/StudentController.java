@@ -20,7 +20,7 @@ public class StudentController {
 
     @GetMapping("allStudents")
     public List<Student> getAllStudents(){
-        System.out.println("list students called...");
+        System.out.println("list students called again without error");
         return studentService.getAllStudents();
     }
 
