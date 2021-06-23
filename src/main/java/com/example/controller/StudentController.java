@@ -2,7 +2,10 @@ package com.example.controller;
 
 import com.example.entity.Student;
 import com.example.service.StudentService;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,16 +20,21 @@ public class StudentController {
 
     @GetMapping("allStudents")
     public List<Student> getAllStudents(){
+        System.out.println("list students called...");
         return studentService.getAllStudents();
     }
 
     @GetMapping("{studentId}")
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Optional<Student> getStudent(@PathVariable Integer studentId){
         return studentService.getStudentById(studentId);
     }
 
+
     @PostMapping("addStudent")
+    @ResponseStatus(value = HttpStatus.CREATED, reason = "Employee Created")
     public Student saveStudent(@RequestBody Student student){
+
         return studentService.saveStudent(student);
     }
 
@@ -34,6 +42,9 @@ public class StudentController {
     public Student updateStudent(@PathVariable Integer studentId,@RequestBody Student student){
         return studentService.updateStudent(studentId,student);
     }
+
+
+
 
     @DeleteMapping("delete/{studentId}")
     public void deleteStudent(@PathVariable Integer studentId){

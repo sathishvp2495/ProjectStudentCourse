@@ -5,21 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "STUDENT_TB")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "STUDENT_ID")
     private int id;
-
-
-    @Column(name = "STUDENT_NAME")
     private String name;
     private String email;
     private int age;
+
 }

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.entity.Student;
 import com.example.repository.StudentRepository;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
+
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Autowired
     private StudentRepository studentRepository;
@@ -35,9 +39,13 @@ public class StudentService {
         }
     }
 
+
+
    public void deleteStudent(Integer studentId){
         if(studentRepository.existsById(studentId)){
             studentRepository.deleteById(studentId);
         }
     }
+
+
 }
